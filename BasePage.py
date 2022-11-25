@@ -18,5 +18,5 @@ class BasPage:
 
     def element_is_presents(self, locator, timeout=5):
         return wait(self.driver, timeout).until(EC.visibility_of_element_located(locator))
-
+# Даша удали этот коммент
 
