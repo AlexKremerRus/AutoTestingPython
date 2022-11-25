@@ -20,4 +20,3 @@ class BasPage:
         return wait(self.driver, timeout).until(EC.visibility_of_element_located(locator))
 
 
-}
