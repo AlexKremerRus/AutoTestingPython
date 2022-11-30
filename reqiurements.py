@@ -1,2 +1,0 @@
-add pytest
-add selenium

@@ -1,11 +1,13 @@
 #conftest для написания фикстур  - фикстура драйвера - открывать и закрывать браузер
 import pytest
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 @pytest.fixture(scope='function')
 def driver():
-	driver = webdriver.Chrome(ChromeDriverManager().install()) 					#(v2)(13:42) (webdriver-manager)
-	driver.maximize_window()
-	yield driver
-	driver.quit()
+    driver = webdriver.Chrome(ChromeDriverManager().install())
+    driver.maximize_window()
+    yield driver
+    driver.quit()
+
