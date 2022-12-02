@@ -21,4 +21,6 @@ class CheckBoxPageLocators:
     EXPAND_ALL_BUTTON = (By.CSS_SELECTOR, 'button[title="Expand all"]')
     ITEM_LIST = (By.CSS_SELECTOR, 'span[class="rct-title"]')
     EXPAND_BUTTON_LIST=(By.CSS_SELECTOR, 'button[title = "Toggle"]')
+    CHECKED_ITEMS = (By.CSS_SELECTOR, 'svg[class ="rct-icon rct-icon-check"]')
+
 
