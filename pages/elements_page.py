@@ -38,16 +38,30 @@ class CheckBoxPage(BasePage):
 
     def click_random_checkbox(self):
         item_list = self.elements_are_vissible(self.locators.ITEM_LIST)
-        count =23
-        while count!=0:
+        count = 23
+        while count != 0:
 
-            item = item_list[random.randint(1,15)]
-            if count>0:
+            item = item_list[random.randint(1, 15)]
+            if count > 0:
 
                 self.go_to_element(item)
                 item.click()
-                count-=1
+                count -= 1
             else:
                 break
 
+    def get_checked_checkboxes(self):
+        checked_list = self.element_are_present(self.locators.CHECKED_ITEMS)
+        data = []
+        for box in checked_list:
+            title_item = box.find_element("xpath", self.locators.TITLE_ITEM)
 
+            data.append(title_item.text)
+        return str(data).lower().replace(' ','').replace('.doc','')
+
+    def get_output_result(self):
+        result_list = self.element_are_present(self.locators.OUTPUT_RESULT)
+        data = []
+        for item in result_list:
+            data.append(item.text)
+        return str(data).lower().replace(' ','')
