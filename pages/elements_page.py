@@ -2,7 +2,7 @@ import random
 import time
 
 from Generator.generator import generated_person
-from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLocators
+from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLocators, RadioButtonPageLocators
 from pages.base_page import BasePage
 
 
@@ -65,3 +65,38 @@ class CheckBoxPage(BasePage):
         for item in result_list:
             data.append(item.text)
         return str(data).lower().replace(' ','')
+
+class RadioButtonPage(BasePage):
+    locators = RadioButtonPageLocators()
+
+    # клик рандом
+
+    def clock_on_the_radio_button(self, choise):
+        choises ={
+            'yes': self.locators.YES_RADIOBUTTON,
+            'impressive': self.locators.IMPRESSIVE_RADIOBUTTON,
+            'no': self.locators.NO_RADIOBUTTON }
+        self.element_is_visible(choises[choise]).click()
+    # def click_random_button(self):
+    #     button_item_list = self.elements_are_vissible(self.locators.BUTTON_ITEMS_LIST)
+    #     count =5
+    #     while count != 0:
+    #
+    #         item = button_item_list[random.randint(1, 2)]
+    #         if count > 0:
+    #
+    #             self.go_to_element(item)
+    #             item.click()
+    #             count -= 1
+    #         else:
+    #             break
+    # проверить что проставилось
+
+    def get_output_result(self):
+        return self.element_is_present((self.locators.OUTPUT_RESULT)).text
+
+
+
+
+    # проверить что написано
+    # ассерт
