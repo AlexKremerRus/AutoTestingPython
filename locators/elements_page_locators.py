@@ -44,3 +44,6 @@ class WebTablePageLocators:
     SUBMIT = (By.CSS_SELECTOR, 'button[id="submit"]')
     CLOSE = (By.CSS_SELECTOR, 'button[class="close"]')
 
+    #tables
+    FULL_PEOPLE_LIST = (By.CSS_SELECTOR, 'div[class="rt-tr-group"]')
+
