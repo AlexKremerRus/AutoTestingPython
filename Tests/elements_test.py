@@ -53,3 +53,16 @@ class TestElements:
             #print(new_person)
             #print(table_result)
             assert new_person in table_result
+
+        def test_web_table_search_person(self, driver):
+            web_table_page = WebTablePage(driver, "https://demoqa.com/webtables")
+            web_table_page.open()
+            firstname = web_table_page.add_new_person()[0]
+            #time.sleep(3)
+            web_table_page.search_some_person(firstname)
+            #time.sleep(3)
+            table_result = web_table_page.check_search_person()
+            #time.sleep(3)
+            #firstname_2="sdfsdf"
+            assert firstname in table_result ,"the person was not found in the table"
+
