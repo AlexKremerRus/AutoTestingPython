@@ -58,11 +58,47 @@ class TestElements:
             web_table_page = WebTablePage(driver, "https://demoqa.com/webtables")
             web_table_page.open()
             firstname = web_table_page.add_new_person()[0]
-            #time.sleep(3)
+            #time.sleep(0.1)
             web_table_page.search_some_person(firstname)
-            #time.sleep(3)
+            #time.sleep(0.1)
             table_result = web_table_page.check_search_person()
-            #time.sleep(3)
+            #time.sleep(0.5)
             #firstname_2="sdfsdf"
             assert firstname in table_result ,"the person was not found in the table"
+
+        def test_web_table_update_person_info(self, driver):
+            web_table_page = WebTablePage(driver, "https://demoqa.com/webtables")
+            web_table_page.open()
+            #web_table_page.update_person_info()
+            lastname=web_table_page.add_new_person()[1]
+            web_table_page.search_some_person(lastname)
+            age=web_table_page.update_person_info()
+            time.sleep(2)
+            row = web_table_page.check_search_person()
+            #print(age)
+            #print(row)
+            assert age in row, "the person card has not been changed"
+
+
+        def test_web_table_delete_person(self, driver):
+            web_table_page = WebTablePage(driver, "https://demoqa.com/webtables")
+            web_table_page.open()
+            #web_table_page.update_person_info()
+            email=web_table_page.add_new_person()[3]
+            web_table_page.search_some_person(email)
+            web_table_page.delete_person()
+            text = web_table_page.check_deleted()
+            assert text == "No rows found"
+
+
+            #assert age in row, "the person card has not been changed"
+
+        def test_web_table_change_count_row(self, driver):
+            web_table_page = WebTablePage(driver, "https://demoqa.com/webtables")
+            web_table_page.open()
+            count = web_table_page.select_up_to_same_rows()
+            assert count==[5, 10, 20, 25, 50, 100], "the number of rows is the table has not been change"
+
+
+
 
