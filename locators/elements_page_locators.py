@@ -52,10 +52,20 @@ class WebTablePageLocators:
     ROW_PARENT = ".//ancestor::div[@class='rt-tr-group']"
 
     # update
-    UPDATE_BUTTON= (By.CSS_SELECTOR, 'span[title="Edit"]')
+    UPDATE_BUTTON = (By.CSS_SELECTOR, 'span[title="Edit"]')
 
     # delete
     NO_ROWS = (By.CSS_SELECTOR, 'div[class="rt-noData"]')
 
     COUNT_ROW_LIST = (By.CSS_SELECTOR, 'select[aria-label = "rows per page"]')
+
+
+class ButtonsPageLocators:
+    DOUBLE_BUTTON = (By.CSS_SELECTOR, "button[id='doubleClickBtn']")
+    RIGHT_CLICK_BUTTON = (By.CSS_SELECTOR, "button[id='rightClickBtn']")
+    CLICK_ME_BUTTON = (By.XPATH, "//div[3]/button")  # вопрос
+
+    RESULT_DOUBLE_BUTTON = (By.CSS_SELECTOR, "p[id='doubleClickMessage']")
+    RESULT_RIGHT_CLICK_BUTTON = (By.CSS_SELECTOR, "p[id='rightClickMessage']")
+    RESULT_CLICK_ME_BUTTON = (By.CSS_SELECTOR, "p[id='dynamicClickMessage']")  # вопрос
 
