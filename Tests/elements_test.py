@@ -144,3 +144,5 @@ class TestUploadAndDownload:
     def test_download_file(self,driver):
         UpADown_page = UploadAndDownloadPage(driver, "https://demoqa.com/upload-download")
         UpADown_page.open()
+        check=UpADown_page.download_file()
+        assert check is True, "the file is not download "
