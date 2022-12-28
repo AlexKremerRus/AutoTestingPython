@@ -119,30 +119,30 @@ class TestElements:
             assert click == "You have done a dynamic click", "No click"
 
 
-class TestLinkPage:
-    def test_check_link(self, driver):
-        links_page = LinksPage(driver, "https://demoqa.com/links")
-        links_page.open()
-        href_link, current_url = links_page.check_new_tab_simple_link()
-        print(href_link, current_url)
-        assert href_link == current_url
+    class TestLinkPage:
+        def test_check_link(self, driver):
+            links_page = LinksPage(driver, "https://demoqa.com/links")
+            links_page.open()
+            href_link, current_url = links_page.check_new_tab_simple_link()
+            print(href_link, current_url)
+            assert href_link == current_url
 
-    def test_broken_link(self, driver):
-        links_page = LinksPage(driver, "https://demoqa.com/links")
-        links_page.open()
-        response_code = str(links_page.check_broken_link('https://demoqa.com/bad-request'))
-        assert response_code == '400'
+        def test_broken_link(self, driver):
+            links_page = LinksPage(driver, "https://demoqa.com/links")
+            links_page.open()
+            response_code = str(links_page.check_broken_link('https://demoqa.com/bad-request'))
+            assert response_code == '400'
 
-class TestUploadAndDownload:
+    class TestUploadAndDownload:
 
-    def test_upload_file(self, driver):
-        UpADown_page = UploadAndDownloadPage(driver, "https://demoqa.com/upload-download")
-        UpADown_page.open()
-        file_name, result =UpADown_page.upload_file()
-        assert file_name==result , "the file is not the same "
+        def test_upload_file(self, driver):
+            UpADown_page = UploadAndDownloadPage(driver, "https://demoqa.com/upload-download")
+            UpADown_page.open()
+            file_name, result =UpADown_page.upload_file()
+            assert file_name==result , "the file is not the same "
 
-    def test_download_file(self,driver):
-        UpADown_page = UploadAndDownloadPage(driver, "https://demoqa.com/upload-download")
-        UpADown_page.open()
-        check=UpADown_page.download_file()
-        assert check is True, "the file is not download "
+        def test_download_file(self,driver):
+            UpADown_page = UploadAndDownloadPage(driver, "https://demoqa.com/upload-download")
+            UpADown_page.open()
+            check=UpADown_page.download_file()
+            assert check is True, "the file is not download "
