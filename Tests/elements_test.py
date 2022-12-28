@@ -1,8 +1,8 @@
 import time
 
-# from pages.base_page import BasePage
+#from pages.base_page import BasePage
 from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage, LinksPage, \
-    UploadAndDownloadPage
+    UploadAndDownloadPage, DynamicsPropertiesPage
 
 
 class TestElements:
@@ -136,13 +136,34 @@ class TestElements:
     class TestUploadAndDownload:
 
         def test_upload_file(self, driver):
-            UpADown_page = UploadAndDownloadPage(driver, "https://demoqa.com/upload-download")
-            UpADown_page.open()
-            file_name, result =UpADown_page.upload_file()
+            upadown_page = UploadAndDownloadPage(driver, "https://demoqa.com/upload-download")
+            upadown_page.open()
+            file_name, result =upadown_page.upload_file()
             assert file_name==result , "the file is not the same "
 
         def test_download_file(self,driver):
-            UpADown_page = UploadAndDownloadPage(driver, "https://demoqa.com/upload-download")
-            UpADown_page.open()
-            check=UpADown_page.download_file()
+            upadown_page = UploadAndDownloadPage(driver, "https://demoqa.com/upload-download")
+            upadown_page.open()
+            check=upadown_page.download_file()
             assert check is True, "the file is not download "
+
+    class TestDynamicPropertiesPage:
+
+        def test_check_enable_button(self,driver):
+            dynamics_page = DynamicsPropertiesPage(driver, "https://demoqa.com/dynamic-properties")
+            dynamics_page.open()
+            enable=dynamics_page.check_enable_button()
+            assert enable is True, "button did not enable after 5 second"
+
+        def test_dynamic_properties(self, driver):
+            dynamics_page = DynamicsPropertiesPage(driver, "https://demoqa.com/dynamic-properties")
+            dynamics_page.open()
+            color_button_after, color_button_before= dynamics_page.check_change_of_color()
+            assert color_button_after!= color_button_before, "colors have not been change"
+
+        def test_dynamics_visible(self,driver):
+            dynamics_page = DynamicsPropertiesPage(driver, "https://demoqa.com/dynamic-properties")
+            dynamics_page.open()
+            appear = dynamics_page.check_appear_of_button()
+            assert appear is True, "button did not appear after 5 second"
+
