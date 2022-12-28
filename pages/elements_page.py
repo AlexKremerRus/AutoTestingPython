@@ -1,11 +1,12 @@
+import os
 import random
 import time
 
 import requests as requests
 
-from Generator.generator import generated_person
+from Generator.generator import generated_person, generated_file
 from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLocators, RadioButtonPageLocators, \
-    WebTablePageLocators, ButtonsPageLocators, LinksPageLocators
+    WebTablePageLocators, ButtonsPageLocators, LinksPageLocators, UploadAndDownloadPageLocators
 from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
 #from selenium.webdriver.support.ui import Select
@@ -247,4 +248,20 @@ class LinksPage(BasePage):
             #return request.status_code
         else:
             return request.status_code
+
+class UploadAndDownloadPage(BasePage):
+    locators=UploadAndDownloadPageLocators()
+
+    def upload_file(self):
+
+        file_name, path=generated_file()
+        self.element_is_present(self.locators.CHOOSE_FILE).send_keys(path)
+        os.remove(path)
+        text=self.element_is_present(self.locators.RESULT_CHOOSE_FILE).text.split("\\")[-1]
+        #print(file_name)
+        file_name=file_name.split("\\")[-1]
+
+        #print(text)
+        return file_name,text
+
 
