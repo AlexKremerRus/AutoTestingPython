@@ -12,3 +12,5 @@ class Person:
     email: str = None
     current_address: str = None
     permanent_address: str = None
+    mobile:str=None
+    birth_date: str = None

@@ -21,6 +21,9 @@ def generated_person():
         current_address=faker_ru.address(),
         permanent_address=faker_ru.address(),
 
+        mobile = faker_ru.msisdn(),
+        birth_date=faker_ru.date(),
+
     )
 
 def generated_file():
