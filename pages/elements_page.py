@@ -246,7 +246,7 @@ class LinksPage(BasePage):
 
     def check_broken_link(self, url):
         request = requests.get(url)
-        if request.status_code==200:
+        if request.status_code == 200:
             self.element_is_present(self.locators.BAD_REQUEST).click()
             #return request.status_code
         else:
